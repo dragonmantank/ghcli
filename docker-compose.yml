@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  build_phar:
+    build: ./docker/build_phar
+    volumes:
+       - ./:/app
+    tty: true
+    user: ${UID}
+
+  composer:
+    image: composer/composer
+    volumes:
+       - ./:/app
+       - ~/.ssh/:/root/.ssh/
+    tty: true
+    user: ${UID}
+    command: composer.phar install
+
+  cli:
+    image: php:cli
+    volumes:
+       - ./:/app
+       - ./ghcli:/.ghcli
+       - ~/.ssh/:/root/.ssh/
+    tty: true
+    user: ${UID}
+    working_dir: /app
+    entrypoint:
+      - php
+      - ghcli.php

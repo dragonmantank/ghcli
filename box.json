@@ -1,0 +1,27 @@
+{
+  "alias": "ghcli.phar",
+  "chmod": "0755",
+  "directories": ["src"],
+  "files": [
+    "LICENSE",
+    "ghcli.php"
+  ],
+  "finder": [
+    {
+      "name": "*.php",
+      "exclude": [
+        "herrera-io",
+        "kherge",
+        "phpseclib",
+        "phpunit",
+        "Tests",
+        "yaml"
+      ],
+      "in": "vendor"
+    }
+  ],
+  "git-version": "package_version",
+  "main": "ghcli.php",
+  "output": "ghcli.phar",
+  "stub": true
+}

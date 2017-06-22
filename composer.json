@@ -1,0 +1,15 @@
+{
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "symfony/console": "^3.3",
+        "cilex/cilex": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GhCli\\": "src/"
+        }
+    },
+    "require-dev": {
+        "kherge/box": "^2.7"
+    }
+}
