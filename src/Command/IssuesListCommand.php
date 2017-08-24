@@ -29,7 +29,19 @@ class IssuesListCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $issues = $this->client->fetchIssues();
+        $milestone = $input->getOption('milestone');
+        $state = $input->getOption('state');
+
+        $query = [];
+        if (!is_null($milestone)) {
+            $query['milestone'] = $milestone;
+        }
+
+        if (!is_null($state)) {
+            $query['state'] = $state;
+        }
+
+        $issues = $this->client->fetchIssues($query);
         $table = new \Symfony\Component\Console\Helper\Table($output);
         $table->setHeaders(['Number', 'Title', 'Milestone', 'Author', 'Assigned']);
 
